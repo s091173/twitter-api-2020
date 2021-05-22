@@ -53,9 +53,7 @@ module.exports = {
       })
     })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   },
 
@@ -121,16 +119,12 @@ module.exports = {
               return res.status(200).json({ status: 'success', message: 'Registered' })
             })
             .catch(error => {
-              const data = { status: 'error', message: error.toString() }
-              console.log(error)
-              return res.status(500).json(data)
+              catchError(res, error)
             })
         }
       })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   },
 
