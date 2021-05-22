@@ -337,6 +337,10 @@ status code: 200
   }
 ]
 ```
+```
+status code: 200
+null
+```
 Failure
 ```
 status code: 400

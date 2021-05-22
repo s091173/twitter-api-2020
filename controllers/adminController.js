@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const validator = require('validator')
 const db = require('../models')
+const { catchError } = require('../utils/errorHandling')
 const User = db.User
 const Followship = db.Followship
 const Tweet = db.Tweet
@@ -46,9 +47,7 @@ module.exports = {
       })
     })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   },
 
@@ -74,9 +73,7 @@ module.exports = {
         return res.status(200).json(users)
       })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   },
 
@@ -95,9 +92,7 @@ module.exports = {
         return res.status(200).json(tweets)
       })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   },
   deleteTweet: (req, res) => {
@@ -119,9 +114,7 @@ module.exports = {
           })
       })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   }
 }

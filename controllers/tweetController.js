@@ -1,5 +1,6 @@
 const db = require('../models')
 const validator = require('validator')
+const { catchError } = require('../utils/errorHandling')
 const Tweet = db.Tweet
 const User = db.User
 const Reply = db.Reply
@@ -31,9 +32,7 @@ module.exports = {
         return res.status(200).json(data)
       })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   },
 
@@ -58,9 +57,7 @@ module.exports = {
         return res.status(200).json(tweet)
       })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   },
 
@@ -82,9 +79,7 @@ module.exports = {
         return res.status(200).json({ status: 'success', message: 'Success' })
       })
       .catch(error => {
-        const data = { status: 'error', message: error.toString() }
-        console.log(error)
-        return res.status(500).json(data)
+        catchError(res, error)
       })
   }
 }
