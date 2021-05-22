@@ -281,8 +281,7 @@ module.exports = {
       order: [['createdAt', 'DESC']]
     }).then(tweets => {
       if (!tweets) {
-        const data = { status: 'error', message: 'Tweet not found.' }
-        return res.status(404).json(data)
+        return res.status(200).json(null)
       }
       const userTweet = []
       tweets.forEach(tweet => {
